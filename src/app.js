@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const router = require("./router/route");
+const router = require("./router");
 const cookieParser = require("cookie-parser");
 const { default: rateLimit } = require("express-rate-limit");
 const helmet = require("helmet");
@@ -25,6 +25,7 @@ app.use(express.json());
 // app.use(cors({ credentials: true, origin: process.env.FRONTEND_URL }));
 app.use(cors());
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan("tiny"));
 app.use(limiter);
 
@@ -34,7 +35,9 @@ app.get("/", (req, res) => {
 	res.send({ hello: "hello" });
 });
 
-app.use("/api/v1", router);
+app.use("/api/v1", router.auth);
+app.use("/calender", router.calender);
+app.use("/schedule_kind", router.scheduleKind);
 
 app.all("*", (req, res, next) => {
 	const error = new Error(`can't find ${req.originalUrl} on the server`);

@@ -1,14 +1,14 @@
 const express = require("express");
 const {
-  registerUser,
-  getUser,
-  login,
-  updateUser,
-  refreshToken,
-  logout,
-  generateOtp,
-  verifyOtp,
-  resetPassword,
+	registerUser,
+	getUser,
+	login,
+	updateUser,
+	refreshToken,
+	logout,
+	generateOtp,
+	verifyOtp,
+	resetPassword,
 } = require("../controllers/authController");
 const { authenticate, localVariable } = require("../middleware/authMiddleware");
 
@@ -26,7 +26,7 @@ router.get("/generateotp", localVariable, generateOtp);
 router.get("/refresh", refreshToken);
 // Testin
 router.get("/test", (req, res) => {
-  res.send({ message: "its working" });
+	res.send({ message: "its working" });
 });
 
 // PUT

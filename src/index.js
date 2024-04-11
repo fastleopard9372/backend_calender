@@ -8,7 +8,7 @@ async function initializeApp() {
 	try {
 		await dbConnect();
 		app.listen(PORT, () => {
-			console.log("Server Started");
+			console.log("Server listening on PORT", PORT);
 		});
 	} catch (err) {
 		console.log(err);
