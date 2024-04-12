@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1", router.auth);
-app.use("/calender", router.calender);
+app.use("/schedule", router.schedule);
 app.use("/schedule_kind", router.scheduleKind);
 
 app.all("*", (req, res, next) => {

@@ -3,7 +3,6 @@ const ScheduleKindModel = require("../models/scheduleKindModel");
 
 //POST Add
 async function addScheduleKind(req, res) {
-	console.log(req.body);
 	console.log("add");
 	const { name, avatar } = req.body;
 	try {
@@ -39,7 +38,7 @@ async function getScheduleKind(req, res) {
 
 	if (!id) return res.send(400).send({ error: "Id is required" });
 
-	const kind = await ScheduleKindModel.findById(id);
+	const kind = await ScheduleKindModel.findById(id).populate("user").populate("kind");
 
 	if (!kind) return res.status(500).send({ error: "Schedule type not found" });
 

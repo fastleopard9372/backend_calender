@@ -1,8 +1,8 @@
 const auth = require("./auth");
-const calender = require("./calender");
+const schedule = require("./schedule");
 const scheduleKind = require("./scheduleKind");
 module.exports = {
 	auth,
-	calender,
+	schedule,
 	scheduleKind,
 };
